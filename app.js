@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var apiV1 = require('./routes/api_v1');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api/v1', apiV1);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +58,17 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// database
+var mongoose = require('mongoose');
+var uriUtil = require('mongodb-uri');
+require('dotenv').load();
+
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }
+
+var mongodbUri = process.env.MONGOLAB_URI;
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+
+mongoose.connect(mongooseUri, options);
 
 module.exports = app;

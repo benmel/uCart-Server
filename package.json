@@ -12,7 +12,10 @@
     "express": "~4.12.2",
     "jade": "~1.9.2",
     "morgan": "~1.5.1",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "mongoose": "~4.0.2",
+    "mongodb-uri": "~0.9.7",
+    "dotenv": "~1.1.0"
   },
   "engines": {
     "node": "0.12.x"
