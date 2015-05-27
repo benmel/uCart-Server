@@ -22,13 +22,13 @@ router.post('/', function(req, res, next) {
 			console.log(err);
 			return next(err);
 		} else {
-			res.redirect('products');
+			res.redirect('/products');
 		}
 	});
 });
 
 router.get('/new', function(req, res, next) {
-	res.render('new_product', { aisles: aisles, categories: categories });
+	res.render('new_product', { product: {}, aisles: aisles, categories: categories });
 });
 
 router.get('/:id', function(req, res, next) {
@@ -37,29 +37,18 @@ router.get('/:id', function(req, res, next) {
 			console.log(err);
 			return next(err);
 		} else {
-			res.json(product);
+			res.render('product', { product: product, aisles: aisles, categories: categories });
 		}
 	});
 });
 
 router.put('/:id', function(req, res, next) {
-	Product.findById(req.params.id, function(err, product) {
+	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product) {
 		if (err) {
 			console.log(err);
 			return next(err);
-		} else {
-			product.name = req.body.name;
-			product.price = req.body.price;
-			product.aisle = req.body.aisle;
-
-			product.save(function(err) {
-				if (err) {
-					console.log(err);
-					return next(err);
-				} else {
-					res.json(product);
-				}
-			});
+		} else { 
+			res.redirect('/products');
 		}
 	});
 });
@@ -70,7 +59,7 @@ router.delete('/:id', function(req, res, next) {
     	console.log(err);
     	return next(err);
     } else {
-	    res.json(product);
+	    res.redirect('/products');
     }
   });
 });

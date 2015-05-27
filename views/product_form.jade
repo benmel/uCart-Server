@@ -1,0 +1,25 @@
+.form-group
+  label(for='name') Name
+  input(type='text', class='form-control', id='name', name='name', value=product.name)
+.form-group
+  label(for='barcode') Barcode
+  input(type='text', class='form-control', id='barcode', name='barcode', value=product.barcode)
+.form-group
+  label(for='price') Price
+  input(type='number', class='form-control', id='price', name='price', value=product.price)  
+.form-group
+  label(for='aisle') Aisle
+  select(class='form-control', id='aisle', name='aisle')
+    each a in aisles
+      if product.aisle==a
+        option(value=a, selected) #{a}
+      else  
+        option(value=a) #{a}
+.form-group
+  label(for='category') Category  
+  select(class='form-control', id='category', name='category')
+    each c in categories
+      if product.category==c
+        option(value=c, selected) #{c}
+      else  
+        option(value=c) #{c}       

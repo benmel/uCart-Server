@@ -2,26 +2,8 @@ extends layout
 
 block content
   div.container
-    h3 Add a product
+    h3 Add Product
     form(id='product-form', method='POST', action='/products', autocomplete='off', novalidate)
-      .form-group
-        label(for='name') Name
-        input(type='text', class='form-control', id='name', name='name')
-      .form-group
-        label(for='barcode') Barcode
-        input(type='text', class='form-control', id='barcode', name='barcode')
-      .form-group
-        label(for='price') Price
-        input(type='number', class='form-control', id='price', name='price')  
-      .form-group
-        label(for='aisle') Aisle
-        select(class='form-control', id='aisle', name='aisle')
-          each a in aisles
-            option(value='#{a}') #{a}
-      .form-group
-        label(for='category') Category  
-        select(class='form-control', id='category', name='category')
-          each c in categories
-            option(value='#{c}') #{c}             
+      include product_form.jade
       .form-group
         button.btn.btn-default Add
