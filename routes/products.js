@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 	    console.log(err);
 	    return next(err);
 	  } else {
-	    res.json(products);
+	    res.render('products', { products: products });
 	  }
 	});
 });
@@ -22,11 +22,11 @@ router.post('/', function(req, res, next) {
 			return next(err);
 		}
 	});
-	res.redirect('back');
+	res.redirect('products');
 });
 
 router.get('/new', function(req, res, next) {
-	res.render('products');
+	res.render('new_product');
 });
 
 router.get('/:id', function(req, res, next) {
