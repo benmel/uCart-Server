@@ -43,7 +43,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-	Product.findByIdAndUpdate(req.params.id, req.body, function(err, product) {
+	Product.findByIdAndUpdate(req.params.id, req.body, { runValidators: true }, function(err, product) {
 		if (err) {
 			console.log(err);
 			return next(err);
