@@ -11,7 +11,6 @@ block content
 					td Aisle
 					td Category
 					td Barcode
-					td ID
 					td
 			tbody
 				each p in products
@@ -19,8 +18,7 @@ block content
 						td= p.name
 						td= p.price
 						td= p.aisle
-						td
-						td
-						td= p.id
+						td= p.category
+						td= p.barcode
 						td
 							a(class='btn btn-default', href='/products/#{p.id}', role='button') Edit

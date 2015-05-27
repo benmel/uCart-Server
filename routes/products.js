@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var Product = require('../models/product.js');
+var aisles = ['Other', 'A', 'B', 'C', 'D', 'E', 'F'];
+var categories = ['Other', 'Meat', 'Dairy', 'Fruits', 'Vegetables', 'Beverages', 'Condiments'];
 
 router.get('/', function(req, res, next) {
   Product.find(function(err, products) {
@@ -15,18 +17,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	var newProduct = new Product({ name: req.body.name, price: req.body.price, aisle: req.body.aisle });
-	newProduct.save(function(err) {
+	Product.create(req.body, function(err, product) {
 		if (err) {
 			console.log(err);
 			return next(err);
+		} else {
+			res.redirect('products');
 		}
 	});
-	res.redirect('products');
 });
 
 router.get('/new', function(req, res, next) {
-	res.render('new_product');
+	res.render('new_product', { aisles: aisles, categories: categories });
 });
 
 router.get('/:id', function(req, res, next) {

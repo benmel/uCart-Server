@@ -15,9 +15,13 @@ block content
         input(type='number', class='form-control', id='price', name='price')  
       .form-group
         label(for='aisle') Aisle
-        input(type='text', class='form-control', id='aisle', name='aisle') 
+        select(class='form-control', id='aisle', name='aisle')
+          each a in aisles
+            option(value='#{a}') #{a}
       .form-group
-        label(for='category') Category
-        input(type='text', class='form-control', id='category', name='category')                
+        label(for='category') Category  
+        select(class='form-control', id='category', name='category')
+          each c in categories
+            option(value='#{c}') #{c}             
       .form-group
         button.btn.btn-default Add
