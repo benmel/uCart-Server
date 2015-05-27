@@ -6,8 +6,7 @@ var ProductSchema = new Schema({
   barcode: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
   aisle: { type: String, required: true },
-  category: { type: String, required: true },
-	modified: { type: Date, default: Date.now }  
+  category: { type: String, required: true } 
 });
 
 module.exports = mongoose.model('test_products', ProductSchema);

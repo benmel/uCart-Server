@@ -54,7 +54,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-	Product.findByIdAndRemove(req.params.id, req.body, function (err, product) {
+	Product.findByIdAndRemove(req.params.id, req.body, function(err, product) {
     if (err) {
     	console.log(err);
     	return next(err);
