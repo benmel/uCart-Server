@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div.container
+    h3 Add a product
+    form(id='product-form', method='POST', action='/products' novalidate)
+      .form-group
+        label(for='name') Name
+        input(type='text', class='form-control', id='name', name='name')
+      .form-group
+        label(for='barcode') Barcode
+        input(type='text', class='form-control', id='barcode', name='barcode')
+      .form-group
+        label(for='price') Price
+        input(type='number', class='form-control', id='price', name='price')  
+      .form-group
+        label(for='aisle') Aisle
+        input(type='text', class='form-control', id='aisle', name='aisle') 
+      .form-group
+        label(for='category') Category
+        input(type='text', class='form-control', id='category', name='category')                
+      .form-group
+        button.btn.btn-default Add
