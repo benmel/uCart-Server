@@ -1,0 +1,12 @@
+.form-group
+  label(for='price') Price
+  if product.coupon
+    input(type='number', class='form-control', id='price', name='price', value=product.coupon.price)
+  else
+    input(type='number', class='form-control', id='price', name='price')    
+.form-group
+  label(for='image') Image URL
+  if product.coupon
+    input(type='text', class='form-control', id='image', name='image', value=product.coupon.image) 
+  else
+    input(type='text', class='form-control', id='image', name='image')        
