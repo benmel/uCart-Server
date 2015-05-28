@@ -4,7 +4,7 @@ var router = express.Router();
 var Product = require('../models/product.js');
 
 router.get('/', function(req, res, next) {
-	Product.find({ 'coupon': { '$ne': null } }, function(err, coupons) {
+	Product.find({ 'coupon': { '$ne': null } }).sort({ name: 1 }).exec(function(err, coupons) {
 	  if (err) {
 	    console.log(err);
 	    return next(err);
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-	Product.find(function(err, products) {
+	Product.find().sort({ name: 1 }).exec(function(err, products) {
 		if (err) {
 			console.log(err);
 	    return next(err);
