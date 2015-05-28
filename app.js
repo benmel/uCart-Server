@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var products = require('./routes/products');
 var apiV1 = require('./routes/api_v1');
 
@@ -34,7 +33,6 @@ app.use(methodOverride(function(req, res){
 }));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/products', products);
 app.use('/api/v1', apiV1);
 
