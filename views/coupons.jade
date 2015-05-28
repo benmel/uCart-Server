@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	div.container
+		h3 Coupons 
+		table(class='table')
+			thead
+				tr
+					td Name
+					td Barcode
+					td Current Price
+					td Discounted Price
+					td Image URL
+					td
+			tbody
+				each c in coupons
+					tr
+						td= c.name
+						td= c.barcode
+						td= c.price
+						td= c.coupon.price
+						td= c.coupon.image
+						td
+							a(class='btn btn-default', href='/coupons/#{c.id}', role='button') Edit

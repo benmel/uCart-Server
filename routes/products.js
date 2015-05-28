@@ -6,7 +6,7 @@ var aisles = ['Other', 'A', 'B', 'C', 'D', 'E', 'F'];
 var categories = ['Other', 'Meat', 'Dairy', 'Fruits', 'Vegetables', 'Beverages', 'Condiments'];
 
 router.get('/', function(req, res, next) {
-  Product.find(function(err, products) {
+  Product.find().sort({ name: 1 }).exec(function(err, products) {
 	  if (err) {
 	    console.log(err);
 	    return next(err);

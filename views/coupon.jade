@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.container
+    h3 Edit Coupon
+    form(id='coupon-form-current', method='POST', action='/coupons/#{product.id}', autocomplete='off', novalidate)
+      input(type='hidden', name='_method', value='put')
+      .form-group
+        label(for='coupon-name') Coupon Name
+        input(type='text', class='form-control', id='coupon-name', name='coupon-name', placeholder='#{product.name}, barcode: #{product.barcode}, price: #{product.price}', disabled)
+      include coupon_form.jade
+      .form-group
+        button.btn.btn-default Update 
+    form(id='coupon-delete', method='POST', action='/coupons/#{product.id}', autocomplete='off', novalidate)
+       input(type='hidden', name='_method', value='delete')
+       button.btn.btn-danger Delete   

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.container
+    h3 Add Coupon
+    form(id='coupon-form', method='POST', action='', autocomplete='off', novalidate) 
+      input(type='hidden', name='_method', value='put')
+      .form-group
+        label(for='product') Product
+        select(class='form-control', id='product-coupon', name='product-coupon')
+          option(value='') Select a product
+          each p in products
+            option(value='/coupons/#{p.id}') #{p.name}, barcode: #{p.barcode}, price: #{p.price}  
+      include coupon_form.jade
+      .form-group
+        button.btn.btn-default Add     
