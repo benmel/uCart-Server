@@ -8,6 +8,7 @@ var methodOverride = require('method-override')
 
 var routes = require('./routes/index');
 var products = require('./routes/products');
+var coupons = require('./routes/coupons');
 var apiV1 = require('./routes/api_v1');
 
 var app = express();
@@ -34,6 +35,7 @@ app.use(methodOverride(function(req, res){
 
 app.use('/', routes);
 app.use('/products', products);
+app.use('/coupons', coupons);
 app.use('/api/v1', apiV1);
 
 // catch 404 and forward to error handler
