@@ -3,7 +3,8 @@ var router = express.Router();
 
 var Product = require('../models/product.js');
 var aisles = ['Other', 'A', 'B', 'C', 'D', 'E', 'F'];
-var categories = ['Other', 'Meat', 'Dairy', 'Fruits', 'Vegetables', 'Beverages', 'Condiments'];
+var categories = ['Other', 'Alcohol', 'Baked Goods', 'Beverages', 'Breakfast', 'Canned Goods', 'Condiments',
+									'Dairy', 'Desserts', 'Frozen Foods', 'Fruits', 'Grains', 'Meat', 'Snacks', 'Vegetables'];
 
 router.get('/', function(req, res, next) {
   Product.find().sort({ name: 1 }).exec(function(err, products) {
